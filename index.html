@@ -93,6 +93,49 @@ button{
     display:none;
 }
 
+/* ================= PROFILE PHOTO ================= */
+
+.profile-photo-wrap{
+    width:108px;
+    height:108px;
+    margin:0 auto 18px;
+    padding:4px;
+    border-radius:50%;
+    background:linear-gradient(
+        135deg,
+        #ff2f92,
+        #ffb300,
+        #7c3cff,
+        #ff2f92
+    );
+    box-shadow:
+        0 0 18px rgba(255,47,146,.45),
+        0 0 40px rgba(124,60,255,.22);
+    animation:profileGlow 3s ease-in-out infinite alternate;
+}
+
+.profile-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:50%;
+    border:3px solid #180819;
+}
+
+@keyframes profileGlow{
+    from{
+        box-shadow:
+            0 0 15px rgba(255,47,146,.35),
+            0 0 25px rgba(124,60,255,.15);
+    }
+    to{
+        box-shadow:
+            0 0 28px rgba(255,47,146,.65),
+            0 0 45px rgba(124,60,255,.3);
+    }
+}
+
 /* ================= FORM ================= */
 
 .form-group{
@@ -142,7 +185,7 @@ button{
     margin:8px 0 15px;
 }
 
-/* SMALL ANDROID SUBMIT BUTTON */
+/* ================= BUTTONS ================= */
 
 .submit-btn,
 .continue-btn,
@@ -175,6 +218,12 @@ button{
     width:100%;
     padding:13px;
     background:linear-gradient(135deg,#ff2f92,#7c3cff);
+}
+
+.continue-btn:hover,
+.start-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(255,47,146,.25);
 }
 
 .loading{
@@ -225,6 +274,31 @@ nav{
 
 .nav-links a:hover{
     color:#ff67ae;
+}
+
+/* ================= MUSIC CONTROL ================= */
+
+.music-control{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    z-index:5000;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:50px;
+    padding:10px 15px;
+    color:#fff;
+    background:rgba(25,7,25,.9);
+    backdrop-filter:blur(12px);
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
+    font-size:13px;
+    font-weight:bold;
+    display:none;
+    align-items:center;
+    gap:7px;
+}
+
+.music-control:hover{
+    transform:translateY(-2px);
 }
 
 /* ================= HERO ================= */
@@ -348,6 +422,7 @@ section{
 .card p{
     color:#bdb5c0;
     line-height:1.7;
+    margin-bottom:15px;
 }
 
 /* ================= HISTORY ================= */
@@ -408,6 +483,12 @@ section{
     border:1px solid rgba(255,255,255,.1);
 }
 
+.creator .profile-photo-wrap{
+    width:150px;
+    height:150px;
+    margin-bottom:20px;
+}
+
 .creator h3{
     font-size:30px;
     color:#ff78b7;
@@ -416,6 +497,30 @@ section{
 
 .creator p{
     color:#bbb;
+    line-height:1.8;
+}
+
+.profile-details{
+    margin-top:18px;
+    display:grid;
+    gap:10px;
+    text-align:left;
+}
+
+.profile-details div{
+    padding:12px 14px;
+    border-radius:12px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.profile-details strong{
+    color:#ff86bd;
+}
+
+.profile-note{
+    margin-top:16px;
+    color:#c9c1ca;
     line-height:1.8;
 }
 
@@ -434,6 +539,31 @@ section{
     to{
         filter:drop-shadow(0 0 30px #ff3d00);
     }
+}
+
+/* ================= BACK TO HOME ================= */
+
+.back-home-wrap{
+    text-align:center;
+    margin-top:35px;
+}
+
+.back-home-btn{
+    display:inline-block;
+    border:0;
+    border-radius:14px;
+    padding:13px 25px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    background:linear-gradient(135deg,#ff2f92,#7c3cff);
+    box-shadow:0 8px 25px rgba(255,47,146,.22);
+    transition:.2s;
+}
+
+.back-home-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(255,47,146,.3);
 }
 
 /* ================= FOOTER ================= */
@@ -521,11 +651,27 @@ footer{
         width:90%;
         max-width:300px;
     }
+
+    .music-control{
+        right:12px;
+        bottom:12px;
+        padding:9px 13px;
+    }
 }
 </style>
 </head>
 
 <body>
+
+<!-- ================= BACKGROUND MUSIC ================= -->
+
+<audio
+    id="bgMusic"
+    src="nastelbom-background-music-606712.mp3"
+    loop
+    preload="auto">
+</audio>
+
 
 <!-- ================= SECURITY GATE ================= -->
 
@@ -535,11 +681,34 @@ footer{
 
         <div class="gate-icon">🔐</div>
 
-        <h1>Security Notification</h1>
+        <div class="profile-photo-wrap">
+            <img
+                class="profile-photo"
+                src="profile.png"
+                alt="Sudip Budha Profile Photo"
+            >
+        </div>
+
+        <h1>Security & Project Information</h1>
 
         <p>
             Welcome to the Nepali Festivals website.
-            Please continue to access the website.
+            यो वेबसाइट कुनै ठूलो संस्था वा कम्पनीको वेबसाइट होइन।
+            यो एक विद्यार्थीले शैक्षिक तथा learning project का रूपमा
+            बनाएको व्यक्तिगत project हो।
+        </p>
+
+        <div class="warning">
+            👨‍🎓 <strong>Project Creator:</strong> Sudip Budha<br>
+            📚 <strong>Class:</strong> 11<br>
+            🪔 <strong>Project:</strong> Nepali Festivals<br><br>
+            🎯 <strong>Purpose:</strong> नेपाली चाडपर्व, संस्कृति,
+            परम्परा र तिनको महत्वबारे सरल तथा डिजिटल रूपमा
+            जानकारी प्रदान गर्नु।
+        </div>
+
+        <p>
+            कृपया Continue थिचेर वेबसाइटमा प्रवेश गर्नुहोस्।
         </p>
 
         <button class="continue-btn" id="continueBtn">
@@ -547,6 +716,7 @@ footer{
         </button>
 
     </div>
+
 
     <!-- ================= PERSONAL INFO ================= -->
 
@@ -564,6 +734,7 @@ footer{
 
             <div class="form-group">
                 <label for="name">नाम</label>
+
                 <input
                     type="text"
                     id="name"
@@ -573,8 +744,10 @@ footer{
                 >
             </div>
 
+
             <div class="form-group">
                 <label for="email">Email</label>
+
                 <input
                     type="email"
                     id="email"
@@ -584,8 +757,12 @@ footer{
                 >
             </div>
 
+
             <div class="form-group">
-                <label for="password">Project Password</label>
+                <label for="password">
+                    Project Password
+                </label>
+
                 <input
                     type="password"
                     id="password"
@@ -596,25 +773,50 @@ footer{
                 >
             </div>
 
+
             <div class="warning">
                 ⚠️ यो केवल project/demo password field हो।
                 आफ्नो वास्तविक Gmail/Google password, OTP वा अन्य
                 गोप्य password यहाँ नराख्नुहोस्।
             </div>
 
-            <div class="form-group">
-                <label for="festival">मनपर्ने चाडपर्व</label>
 
-                <select id="festival" name="festival" required>
-                    <option value="">Select Festival</option>
-                    <option value="Dashain">Dashain</option>
-                    <option value="Tihar">Tihar</option>
-                    <option value="Chhath">Chhath</option>
+            <div class="form-group">
+
+                <label for="festival">
+                    मनपर्ने चाडपर्व
+                </label>
+
+                <select
+                    id="festival"
+                    name="festival"
+                    required
+                >
+                    <option value="">
+                        Select Festival
+                    </option>
+
+                    <option value="Dashain">
+                        Dashain
+                    </option>
+
+                    <option value="Tihar">
+                        Tihar
+                    </option>
+
+                    <option value="Chhath">
+                        Chhath
+                    </option>
                 </select>
+
             </div>
 
+
             <div class="form-group">
-                <label for="message">Message</label>
+
+                <label for="message">
+                    Message
+                </label>
 
                 <textarea
                     id="message"
@@ -622,7 +824,9 @@ footer{
                     placeholder="आफ्नो सन्देश लेख्नुहोस्..."
                     required
                 ></textarea>
+
             </div>
+
 
             <button
                 type="submit"
@@ -632,6 +836,7 @@ footer{
                 Submit
             </button>
 
+
             <div class="loading" id="loading">
                 ⏳ Data पठाउँदै...
             </div>
@@ -639,6 +844,7 @@ footer{
         </form>
 
     </div>
+
 
     <!-- ================= SUCCESS ================= -->
 
@@ -755,9 +961,27 @@ footer{
                 </h3>
 
                 <p>
-                    दशैं नेपालको प्रमुख हिन्दू पर्व हो।
-                    यो परिवार, आशीर्वाद, टीका र जमरा
-                    तथा आपसी भेटघाटसँग सम्बन्धित पर्व हो।
+                    दशैं नेपालको सबैभन्दा ठूलो र व्यापक रूपमा मनाइने
+                    प्रमुख सांस्कृतिक तथा धार्मिक पर्वमध्ये एक हो।
+                    यो परिवार, आशीर्वाद, टीका, जमरा, भेटघाट र
+                    आपसी सद्भावसँग गहिरो रूपमा जोडिएको पर्व हो।
+                </p>
+
+                <p>
+                    दशैंका विभिन्न दिनहरूमा विशेष धार्मिक तथा सांस्कृतिक
+                    गतिविधिहरू गरिन्छन्। घटस्थापनादेखि जमरा राख्ने,
+                    फूलपाती, महाअष्टमी, महानवमी र विजयादशमीसम्मका
+                    दिनहरूलाई विशेष महत्व दिइन्छ। विजयादशमीका दिन
+                    ठूलाबडाबाट टीका, जमरा र आशीर्वाद लिने परम्परा
+                    विशेष रूपमा प्रचलित छ।
+                </p>
+
+                <p>
+                    दशैंको अर्को महत्वपूर्ण पक्ष परिवार र आफन्तबीचको
+                    सम्बन्ध हो। टाढा रहेका परिवारका सदस्यहरू पनि
+                    घर फर्किने, भेटघाट गर्ने र शुभकामना आदानप्रदान
+                    गर्ने अवसर पाउँछन्। यसले पारिवारिक एकता,
+                    सम्मान र सामाजिक सद्भावलाई बलियो बनाउन सहयोग गर्छ।
                 </p>
 
             </div>
@@ -774,9 +998,29 @@ footer{
                 </h3>
 
                 <p>
-                    तिहार उज्यालो, दीप, फूल, देउसी-भैलो
-                    तथा विभिन्न सांस्कृतिक परम्परासँग
-                    सम्बन्धित सुन्दर पर्व हो।
+                    तिहार नेपालमा उज्यालो, दीप, फूल, संगीत, देउसी-भैलो
+                    र पारिवारिक सम्बन्धसँग जोडिएको सुन्दर पाँचदिने
+                    सांस्कृतिक पर्व हो। यसलाई दीपावलीका रूपमा पनि
+                    चिनिन्छ र घर तथा वरपर दीप प्रज्वलन गरेर उज्यालो
+                    बनाउने परम्परा छ।
+                </p>
+
+                <p>
+                    तिहारका विभिन्न दिनमा काग, कुकुर र गाईको सम्मान तथा
+                    पूजा गर्ने परम्परा रहेको छ। लक्ष्मीपूजाका दिन
+                    घर सफा गरेर दीप बाल्ने र समृद्धिको कामना गर्ने
+                    गरिन्छ। अन्तिम दिन भाइटीकामा दिदीबहिनीले
+                    दाजुभाइलाई टीका लगाइदिने र शुभकामना दिने परम्परा
+                    रहेको छ।
+                </p>
+
+                <p>
+                    देउसी-भैलो तिहारको अर्को आकर्षक पक्ष हो। यसले
+                    समुदायमा भेटघाट, मनोरञ्जन, सहयोग र आपसी सम्बन्ध
+                    बढाउने वातावरण बनाउँछ। त्यसैले तिहार केवल
+                    दीप बाल्ने पर्व मात्र नभई परिवार, प्रकृति,
+                    जनावरप्रतिको सम्मान र सामाजिक सद्भावसँग जोडिएको
+                    महत्वपूर्ण नेपाली संस्कृति हो।
                 </p>
 
             </div>
@@ -793,8 +1037,27 @@ footer{
                 </h3>
 
                 <p>
-                    छठ सूर्यको उपासना र प्रकृतिप्रतिको
-                    सम्मानसँग जोडिएको महत्वपूर्ण पर्व हो।
+                    छठ सूर्यको उपासना र प्रकृतिप्रतिको सम्मानसँग
+                    सम्बन्धित महत्वपूर्ण पर्व हो। विशेषगरी तराई-मधेश
+                    क्षेत्रमा यसको सांस्कृतिक महत्व निकै ठूलो छ।
+                    यस पर्वमा सूर्यलाई श्रद्धापूर्वक अर्घ्य दिने
+                    परम्परा रहेको छ।
+                </p>
+
+                <p>
+                    छठका अवसरमा नदी, पोखरी तथा जलाशयका किनारमा
+                    विशेष पूजा तथा धार्मिक गतिविधि गरिन्छ। व्रत,
+                    पूजा सामग्रीको तयारी, प्रसाद र सूर्यलाई अर्घ्य
+                    दिने परम्पराले यस पर्वको सांस्कृतिक पहिचानलाई
+                    विशेष बनाएको छ।
+                </p>
+
+                <p>
+                    छठले प्रकृति, सूर्य र पानीजस्ता प्राकृतिक
+                    स्रोतप्रतिको सम्मान तथा परिवार र समुदायबीचको
+                    सहकार्यलाई पनि महत्व दिन्छ। यस कारण छठ नेपालको
+                    विविध सांस्कृतिक परम्परामध्ये महत्वपूर्ण पर्वका
+                    रूपमा रहेको छ।
                 </p>
 
             </div>
@@ -835,6 +1098,9 @@ footer{
                     परिवारका सदस्यहरू एकै ठाउँमा जम्मा हुने,
                     ठूलाबडाबाट टीका तथा आशीर्वाद लिने
                     परम्परा यस पर्वको महत्वपूर्ण पक्ष हो।
+                    यस अवसरमा घरपरिवार र आफन्तबीच भेटघाट हुने,
+                    शुभकामना आदानप्रदान गर्ने र परम्परागत रूपमा
+                    नयाँ उमंगका साथ पर्व मनाउने गरिन्छ।
                 </p>
 
             </div>
@@ -853,6 +1119,8 @@ footer{
                     परम्पराहरू यससँग जोडिएका छन्।
                     घरमा दीप प्रज्वलन र देउसी-भैलो
                     पनि यसको विशेषता हो।
+                    यस पर्वले उज्यालो, पारिवारिक प्रेम, सम्मान
+                    र सामाजिक सद्भावको भावना अभिव्यक्त गर्छ।
                 </p>
 
             </div>
@@ -890,6 +1158,7 @@ footer{
 
         </div>
 
+
         <div class="about-box">
 
             <p>
@@ -902,6 +1171,24 @@ footer{
                 यसको उद्देश्य नेपाली संस्कृति,
                 परम्परा र चाडपर्वबारे सरल र आकर्षक
                 तरिकाले जानकारी प्रदान गर्नु हो।
+            </p>
+
+            <p>
+                यस project मार्फत दशैं, तिहार र छठजस्ता
+                नेपाली चाडपर्वका सांस्कृतिक पक्ष, पारिवारिक
+                महत्व, परम्परा, पूजा तथा सामाजिक गतिविधिहरूबारे
+                एकै ठाउँमा जानकारी प्रस्तुत गरिएको छ। विद्यार्थी,
+                शिक्षक तथा नेपाली संस्कृति बुझ्न चाहने जोसुकैका
+                लागि यो वेबसाइट उपयोगी डिजिटल सामग्रीका रूपमा
+                प्रयोग गर्न सकिन्छ।
+            </p>
+
+            <p>
+                वेबसाइटलाई आधुनिक dark तथा responsive design मा
+                बनाइएको छ, जसले computer र mobile device दुवैमा
+                सामग्री हेर्न सहज बनाउँछ। यसमा form मार्फत
+                प्रयोगकर्ताको जानकारी Google Apps Script हुँदै
+                Google Sheet मा पठाउने सुविधा पनि राखिएको छ।
             </p>
 
         </div>
@@ -994,16 +1281,60 @@ footer{
 
         </div>
 
+
         <div class="creator">
+
+            <div class="profile-photo-wrap">
+
+                <img
+                    class="profile-photo"
+                    src="profile.png"
+                    alt="Sudip Budha Profile Photo"
+                >
+
+            </div>
+
 
             <h3>
                 Sudip Budha
             </h3>
 
-            <p>
+
+            <div class="profile-details">
+
+                <div>
+                    <strong>नाम:</strong>
+                    Sudip Budha
+                </div>
+
+                <div>
+                    <strong>कक्षा:</strong>
+                    ११
+                </div>
+
+                <div>
+                    <strong>Project Name:</strong>
+                    Nepali Festivals
+                </div>
+
+            </div>
+
+
+            <p class="profile-note">
                 नेपाली संस्कृति र प्रविधिलाई जोडेर
                 बनाइएको यो project एक विद्यार्थीको
                 learning project हो।
+            </p>
+
+
+            <p class="profile-note">
+                मैले यो project नेपाली चाडपर्व, संस्कृति र
+                परम्पराबारे सरल तथा आकर्षक डिजिटल जानकारी
+                प्रदान गर्न र आफ्नो web development तथा
+                programming सीप अभ्यास गर्न बनाएको हुँ।
+                यस वेबसाइटले दशैं, तिहार र छठजस्ता प्रमुख
+                नेपाली चाडपर्वका इतिहास, सांस्कृतिक महत्व,
+                परम्परा तथा विशेषताबारे जानकारी दिन्छ।
             </p>
 
         </div>
@@ -1034,6 +1365,17 @@ footer{
     </section>
 
 
+    <!-- BACK TO HOME -->
+
+    <div class="back-home-wrap">
+
+        <a href="#home" class="back-home-btn">
+            🏠 Back to Home
+        </a>
+
+    </div>
+
+
     <!-- FOOTER -->
 
     <footer>
@@ -1051,14 +1393,22 @@ footer{
 </div>
 
 
+<!-- ================= MUSIC CONTROL ================= -->
+
+<button
+    class="music-control"
+    id="musicControl"
+    type="button"
+>
+    🎵 Music ON
+</button>
+
+
 <script>
 
 /* =====================================================
    GOOGLE APPS SCRIPT URL
-   =====================================================
-
-   यहाँ तपाईंले माथि दिएको /exec Web App URL paste गर्नुहोस्.
-*/
+   ===================================================== */
 
 const GOOGLE_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbyZSavdCqzeSaE2cFNcVpIfEy83wNcDuzxrlY2-CLXT8LaVd78jt3GMztXSzWa2GPYi/exec";
@@ -1096,116 +1446,269 @@ const securityGate =
 const website =
     document.getElementById("website");
 
+const bgMusic =
+    document.getElementById("bgMusic");
+
+const musicControl =
+    document.getElementById("musicControl");
+
+
+/* ================= MUSIC ================= */
+
+let musicStarted = false;
+
+
+/* Music starts when Continue is clicked.
+   This works better with browser autoplay restrictions. */
+
+function startMusic(){
+
+    if(!bgMusic){
+        return;
+    }
+
+    if(musicStarted){
+        return;
+    }
+
+    bgMusic.volume = 0.30;
+
+    bgMusic.play()
+        .then(function(){
+
+            musicStarted = true;
+
+            musicControl.style.display = "flex";
+
+            musicControl.innerHTML =
+                "🎵 Music ON";
+
+        })
+        .catch(function(error){
+
+            console.log(
+                "Background music could not start:",
+                error
+            );
+
+        });
+
+}
+
+
+/* ================= MUSIC ON/OFF ================= */
+
+musicControl.addEventListener(
+    "click",
+    function(){
+
+        if(!bgMusic){
+            return;
+        }
+
+        if(bgMusic.paused){
+
+            bgMusic.play()
+                .then(function(){
+
+                    musicStarted = true;
+
+                    musicControl.innerHTML =
+                        "🎵 Music ON";
+
+                })
+                .catch(function(error){
+
+                    console.log(error);
+
+                });
+
+        }else{
+
+            bgMusic.pause();
+
+            musicControl.innerHTML =
+                "🔇 Music OFF";
+
+        }
+
+    }
+);
+
 
 /* ================= CONTINUE ================= */
 
-continueBtn.addEventListener("click",function(){
+continueBtn.addEventListener(
+    "click",
+    function(){
 
-    securityCard.classList.add("hidden");
+        /* START MUSIC BEFORE MOVING TO FORM */
+        startMusic();
 
-    formCard.classList.remove("hidden");
+        securityCard.classList.add("hidden");
 
-});
+        formCard.classList.remove("hidden");
+
+    }
+);
 
 
 /* ================= FORM SUBMIT ================= */
 
-festivalForm.addEventListener("submit",async function(e){
+festivalForm.addEventListener(
+    "submit",
+    async function(e){
 
-    e.preventDefault();
+        e.preventDefault();
 
-    submitBtn.disabled = true;
+        submitBtn.disabled = true;
 
-    submitBtn.style.opacity = "0.65";
+        submitBtn.style.opacity = "0.65";
 
-    loading.style.display = "block";
-
-
-    const data = {
-
-        date:
-            new Date().toLocaleString(),
-
-        name:
-            document.getElementById("name").value.trim(),
-
-        email:
-            document.getElementById("email").value.trim(),
-
-        password:
-            document.getElementById("password").value,
-
-        festival:
-            document.getElementById("festival").value,
-
-        message:
-            document.getElementById("message").value.trim()
-
-    };
+        loading.style.display = "block";
 
 
-    try{
+        const data = {
 
-        await fetch(
-            GOOGLE_SCRIPT_URL,
-            {
-                method:"POST",
+            date:
+                new Date().toLocaleString(),
 
-                mode:"no-cors",
+            name:
+                document
+                .getElementById("name")
+                .value
+                .trim(),
 
-                headers:{
-                    "Content-Type":
-                        "application/json"
-                },
+            email:
+                document
+                .getElementById("email")
+                .value
+                .trim(),
 
-                body:
-                    JSON.stringify(data)
-            }
-        );
+            password:
+                document
+                .getElementById("password")
+                .value,
+
+            festival:
+                document
+                .getElementById("festival")
+                .value,
+
+            message:
+                document
+                .getElementById("message")
+                .value
+                .trim()
+
+        };
 
 
-        /* SUCCESS */
+        try{
 
-        formCard.classList.add("hidden");
+            await fetch(
+                GOOGLE_SCRIPT_URL,
+                {
+                    method:"POST",
 
-        successCard.classList.remove("hidden");
+                    mode:"no-cors",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(data)
+                }
+            );
 
 
-    }catch(error){
+            /* SUCCESS */
 
-        alert(
-            "Data पठाउन समस्या भयो। Google Apps Script URL र deployment जाँच गर्नुहोस्।"
-        );
+            formCard.classList.add("hidden");
 
-        console.error(error);
+            successCard.classList.remove("hidden");
 
-        submitBtn.disabled = false;
 
-        submitBtn.style.opacity = "1";
+        }catch(error){
 
-        loading.style.display = "none";
+            alert(
+                "Data पठाउन समस्या भयो। Google Apps Script URL र deployment जाँच गर्नुहोस्।"
+            );
+
+            console.error(error);
+
+            submitBtn.disabled = false;
+
+            submitBtn.style.opacity = "1";
+
+            loading.style.display = "none";
+
+        }
 
     }
-
-});
+);
 
 
 /* ================= START WEBSITE ================= */
 
-startBtn.addEventListener("click",function(){
+startBtn.addEventListener(
+    "click",
+    function(){
 
-    securityGate.style.display = "none";
+        securityGate.style.display = "none";
 
-    website.style.display = "block";
+        website.style.display = "block";
 
-    document.body.style.overflowX = "hidden";
+        document.body.style.overflowX = "hidden";
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
 
-});
+        /* IMPORTANT:
+           Music is already running from Continue.
+           It will NOT restart here. */
+
+        if(bgMusic){
+
+            if(!bgMusic.paused){
+
+                musicControl.style.display = "flex";
+
+            }
+
+        }
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+/* ================= PROFILE IMAGE FALLBACK ================= */
+
+const profileImages =
+    document.querySelectorAll(
+        'img[src="profile.png"]'
+    );
+
+profileImages.forEach(
+    function(img){
+
+        img.addEventListener(
+            "error",
+            function(){
+
+                this.style.display = "none";
+
+            }
+        );
+
+    }
+);
 
 </script>
 
