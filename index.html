@@ -208,7 +208,7 @@ footer{padding:35px 20px;text-align:center;color:#8f8791;border-top:1px solid #f
  * Paste your deployed Apps Script Web App URL here.
  * URL must end in /exec. Do not paste it as a Markdown link.
  */
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzMEYMfsXAjzQzxFmb5bjxZIg8APgmMjIfxFF_SUY5FTONDzok8vGGSOQplMg6nW3nc/exec";
+const GOOGLE_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_EXEC_URL_HERE";
 
 const $ = id => document.getElementById(id);
 const securityGate = $("securityGate");
@@ -295,7 +295,7 @@ $("switchModeBtn").addEventListener("click", () => setMode(mode === "register" ?
  */
 async function postToAppsScript(payload) {
   if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")) {
-    throw new Error("पहिले GOOGLE_SCRIPT_URL मा आफ्नो deployed Apps Script /exec URL राख्नुहोस्।");
+    throw new Error("https://script.google.com/macros/s/AKfycbxjNRwnd-TZL0fAXNhTFjmSeQGeEYi40YXy6herrNCiHe3k6ak_xNu-e4J8ckoHGJcj/exec");
   }
   let response;
   try {
