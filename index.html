@@ -294,8 +294,8 @@ $("switchModeBtn").addEventListener("click", () => setMode(mode === "register" ?
  * same-origin backend or use a properly configured API/proxy.
  */
 async function postToAppsScript(payload) {
-  if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")) {
-    throw new Error("https://script.google.com/macros/s/AKfycbxjNRwnd-TZL0fAXNhTFjmSeQGeEYi40YXy6herrNCiHe3k6ak_xNu-e4J8ckoHGJcj/exec");
+  if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("https://script.google.com/macros/s/AKfycbx56Q2OFprv2WP7QwQ0If6IbxUB7wUSYOUGxqOYYZqimnPbpPAgUbxotQ0tFLznT7Yh/exec")) {
+    throw new Error("error");
   }
   let response;
   try {
